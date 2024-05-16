@@ -1,13 +1,15 @@
-# My Interface Name is wlan1, Your interface Name may be diffrent
-### see wireless network command
+# These commands are works only on linux based system
+## An external Network Adapter is required, Your Network Adapter must support `monitor mode`, `packet injection mode`.
+### Here my inetwork nterface name is `wlan1`, Your interface Name may be diffrent use accordingly.
+&nbsp;
+### see wireless networks
 ```
 iwconfig
 ```
-### see wireless network iP Aadress command
+### see wireless network iP 
 ```
 ifconfig
 ```
-
 ### disable network interface 
 ```
 ifconfig wlan1 down
@@ -50,7 +52,7 @@ airodump-ng --bssid @1 --channel @2 --write fileName wlan1
 
 @2 → Channel no. of target
 
-### to read captured data captured in `fileName.cap`, open wireshark application
+### open wireshark application to read captured data, captured in `fileName.cap`, 
 ```
 wireshark
 ```
