@@ -24,7 +24,6 @@ iwconfig wlan1 mode monitor
 ```
 ifconfig wlan1 up
 ```
-&nbsp;
 
 ---
 &nbsp;
@@ -42,7 +41,7 @@ airodump-ng --band a wlan1
 ```
 airodump-ng --band abg wlan1
 ```
-### caputre data into a file `fileName` it`s a file name
+### caputre data into a file `fileName`
 ```
 airodump-ng --bssid @1 --channel @2 --write fileName wlan1
 ```
@@ -55,7 +54,7 @@ airodump-ng --bssid @1 --channel @2 --write fileName wlan1
 ```
 wireshark
 ```
-&nbsp;
+
 
 ---
 &nbsp;
@@ -68,6 +67,7 @@ aireplay-ng --deauth @1 -a @2 -c @3 wlan1
 @2 → BSSID of router
 
 @3 → MAC Address of the Client
+
 ### 
 ```
 
