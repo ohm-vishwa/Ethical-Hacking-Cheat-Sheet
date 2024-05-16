@@ -1,6 +1,6 @@
 # These commands are works only on linux based system
 ## An external Network Adapter is required, Your Network Adapter must support `monitor mode`, `packet injection mode`.
-### Here my inetwork nterface name is `wlan1`, Your interface Name may be diffrent use accordingly.
+### Here my network interface name is `wlan1`, Your interface Name may be diffrent use accordingly.
 &nbsp;
 ### see wireless networks
 ```
