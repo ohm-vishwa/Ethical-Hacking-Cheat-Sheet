@@ -3,7 +3,7 @@
 
 ### Here my network interface name is `wlan1`, use these commands `iwconfig` or `ifconfig` to check your network interface name, your network interface name may be diffrent use accordingly.
 ## Table of Content
-- [Basic Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#basics-commands)
+- [Basic Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#basic-commands)
 - [Packet Sniffing](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#packet-sniffing)
 - [DE-Authentication Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#de-authentication-attack)
 
@@ -26,8 +26,6 @@ iwconfig wlan1 mode monitor
 ```
 ifconfig wlan1 up
 ```
-
----
 ---
 # Packet Sniffing
 
@@ -56,9 +54,6 @@ airodump-ng --bssid @1 --channel @2 --write fileName wlan1
 ```
 wireshark
 ```
-
-
----
 ---
 # DE-Authentication Attack
 ```
