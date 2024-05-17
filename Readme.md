@@ -3,17 +3,16 @@
 
 ### Here my network interface name is `wlan1`, use these commands `iwconfig` or `ifconfig` to check your network interface name, your network interface name may be diffrent use accordingly.
 ## Table of Content
-- [Basics Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#basics-commands)
-- [Packet Sniffing](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#packet-sniffing)
-- [DE-Authentication Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#de-authentication-attack)
+- ### [Basic Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#basics-commands)
+- ### [Packet Sniffing](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#packet-sniffing)
+- ### [DE-Authentication Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#de-authentication-attack)
 
 
 ---
-# Basics Commands
-
+# Basic Commands
 ### disable network interface 
-```
-ifconfig wlan1 down
+``` 
+ifconfig wlan1 down 
 ```
 ### kill network manager
 ```
