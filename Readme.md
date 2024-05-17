@@ -1,15 +1,9 @@
-# These commands are works only on linux based system
-## An external Network Adapter is required, Your Network Adapter must support `monitor mode`, `packet injection mode`.
-### Here my network interface name is `wlan1`, Your interface Name may be diffrent use accordingly.
+# These commands are works only on linux based OS system
+## An external Network Adapter is required, Your Network Adapter must support `monitor mode`, `packet injection mode`
+
+### Here my network interface name is `wlan1`, use these commands `iwconfig` or `ifconfig` to check your network interface name, your network interface name may be diffrent use accordingly.
 &nbsp;
-### see wireless networks
-```
-iwconfig
-```
-### see wireless network iP 
-```
-ifconfig
-```
+
 ### disable network interface 
 ```
 ifconfig wlan1 down
