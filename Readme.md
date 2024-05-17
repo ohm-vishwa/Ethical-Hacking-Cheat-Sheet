@@ -2,7 +2,13 @@
 ## An external Network Adapter is required, Your Network Adapter must support `monitor mode`, `packet injection mode`
 
 ### Here my network interface name is `wlan1`, use these commands `iwconfig` or `ifconfig` to check your network interface name, your network interface name may be diffrent use accordingly.
-&nbsp;
+# Table of Content
+- [Packet Sniffing](#-Packet-Sniffing)
+- [DE-Authentication Attack](#-DE-Authentication-Attack)
+
+
+---
+# Basics Commands
 
 ### disable network interface 
 ```
@@ -22,7 +28,7 @@ ifconfig wlan1 up
 ```
 
 ---
-&nbsp;
+---
 # Packet Sniffing
 
 ### sniff network around us `2.4 GHz frequency only`
@@ -37,7 +43,7 @@ airodump-ng --band a wlan1
 ```
 airodump-ng --band abg wlan1
 ```
-### caputre data into a file `fileName`
+### capture data into a file `fileName`
 ```
 airodump-ng --bssid @1 --channel @2 --write fileName wlan1
 ```
@@ -53,7 +59,7 @@ wireshark
 
 
 ---
-&nbsp;
+---
 # DE-Authentication Attack
 ```
 aireplay-ng --deauth @1 -a @2 -c @3 wlan1
