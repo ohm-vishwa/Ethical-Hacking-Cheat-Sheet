@@ -26,13 +26,13 @@ sudo su
 - [Network Adapter testing commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-adapter-testing-commands)
 - [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#changing-mac-address)
 - [Network Hacking](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
-    * [1. Pre-Connection Attack]()
-    * [2. Ganing Access]()
-    * [3. Post-Connection Attack]()
+    * [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
+    * [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
+    * [3. Post-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#3-post-connection-attack)
 
 
 
-    
+
 ---
 ## Network Manager Commands
  Kill Network Manager
@@ -82,9 +82,9 @@ airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 ---
 # Network Hacking
 
-### [1. Pre-Connection Attack]()
-### [2. Ganing Access]()
-### [3. Post-Connection Attack]()
+### [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
+### [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
+### [3. Post-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#3-post-connection-attack)
 &nbsp;
 <details>
     <summary>What is MAC Address ?</summary>
@@ -252,7 +252,42 @@ airodump-ng --bssid @1 --channel @2 wlan1
 @2 → Channel number
 
 ---
+
 # 2. Gaining Access
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 3. Post-Connection Attack
+
+
+
+
+
+
+
+
+
 <details>
     <summary></summary>
 
