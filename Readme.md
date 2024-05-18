@@ -1,4 +1,4 @@
-# <p style="text-align:center">Ethical Hacking Cheat Sheet </p>
+# Ethical Hacking Cheat Sheet
 <details>
     <summary> Basic Information</summary>
 These commands are works only on linux based OS system
@@ -24,66 +24,177 @@ sudo su
 # Table of Content
 - [Network Manager Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-manager-commands)
 - [Network Adapter testing commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-adapter-testing-commands)
-- [Packet Sniffing](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#packet-sniffing)
-- [DE-Authentication Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#de-authentication-attack)
+- [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#changing-mac-address)
+- [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
+- 
 
 ---
 ## Network Manager Commands
-### Kill Network Manager
+ Kill Network Manager
 ```
 airmon-ng check kill
 ```
-### Enable Network Manager
+ Enable Network Manager
 ```
 service NetworkManager start
 ```
-### Restart Network Manager
+ Restart Network Manager
 ```
 systemctl restart NetworkManager
 ```
-### Check Status of Network Manager
+ Check Status of Network Manager
 ```
 systemctl status NetworkManager
 ```
 ---
 ## Network Adapter Testing Commands
-### Enable Monitor Mode
+ Enable Monitor Mode
+<details>
+    <summary>Why we need to enable monitor mode ?</summary>
+we want is to be able to capture all the packets
+that are within our range,
+even if they are sent to the router
+and even if they are sent to another device.
+So to do this, we need to set our network adapter to the mode
+</details>
+
 ```
 airmon-ng start wlan1
 ```
-### Disable Monitor Mode
+ Disable Monitor Mode
 ```
 airmon-ng stop wlan1
 ```
-### Packet Injection test
+ Packet Injection test
 ```
 aireplay-ng --test wlan1
 ```
-### Creating Access Point Test
+ Access Point Creation Test
 you can put any fake MAC Address like this `00:01:02:03:04:05`
 ```
 airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 ```
 ---
+# Network Hacking
+
+### [1. Pre-Connection Attack]()
+### [2. Ganing Access]()
+### [3. Post-Connection Attack]()
+&nbsp;
+<details>
+    <summary>What is MAC Address ?</summary>
+MAC address stands for Media Access Control,
+it's a permanent, physical, and unique address
+assigned to network interfaces
+by the device manufacturer.
+So whether you have a wireless card,
+or a wired, or Ethernet card,
+each one of these network cards
+come with a specific address that is unique to this card.
+So there is no two devices in the world
+that would have the same MAC address.
+And this address will always be the same
+to this specific device,
+even if you unplug it from your computer,
+connect it to another computer,
+then this network device will always have the same address.
+So you might already know that the IP address
+is used in the internet to identify computers,
+and communicate between devices on the internet.
+The MAC address is used within the network
+to identify devices and transfer data between devices.
+So each piece of data or packet
+that is sent within the network
+contains a source MAC and a destination MAC.
+Therefore, this packet would flow
+from the source MAC to the destination MAC.
+So because this is a physical unique address
+to each interface, to each network device,
+and because it is used to identify devices,
+then changing it will make you anonymous on the network.
+Not only that, but the MAC address is often used
+by filters to prevent or allow devices
+to connect to networks,
+and do specific tasks on the network.
+So being able to change your MAC address
+to another device's MAC address
+will allow you to impersonate this device
+and allow you to do things
+that you might not be able to do.
+So you'd be able to bypass filters,
+or connect to networks that only specific devices
+with specific MAC addresses can connect to,
+and you will also be able to hide your identity.
+</details>
+
+ Changing MAC Address
+1. step
+```
+ifconfig
+```
+2. step
+```
+ifconfig wlan1 down
+```
+3. step ( you can assign any MAC Address, just make sure your address starts with 00 ) 
+```
+ifconfig wlan1 ether 00:11:22:33:44:55
+```
+4. step
+```
+ifconfig wlan1 up
+```
+
+the MAC address will revert back
+to the original one once you restart the computer,
+because we're only changing the MAC address in memory,
+we're not really changing the physical MAC address.
+
+```
+ifconfig wlan1 down
+ifconfig wlan1 ether 00:11:22:33:44:55
+ifconfig wlan1 up
+```
+---
+# 1. Pre-Connection Attack
 ## Packet Sniffing
 <details>
     <summary>What is Packet Sniffing ?</summary>
-Packet sniffing is like secretly listening to conversations on the internet to see what information is being sent between computers.
+Now that we have enabled monitor mode
+on our wireless interface,
+we are able to capture all the wifi packets
+sent within our range,
+even if the packet is not directed to our computer,
+even if we're not connected to the target network,
+and even without knowing the key
+or the password to the target network.
+So all we need right now is a program
+that can capture these packets for us.
+The program that we're going to use is called { airodump-ng }.
+It's part of the a { aircrack-ng } suit,
+and it's a packet-sniffer,
+so it's basically a program designed
+to capture packets while you're in monitor mode.
+So it will allow us to see
+all the wireless networks around us,
+and show us detailed information about it's MAC address,
+it's channel, it's encryption,
+the clients connected to this network, and so on.
 </details>
 
-### Sniff Network around `2.4 GHz`
+ Sniff Network around `2.4 GHz`
 ```
 airodump-ng wlan1
 ```
-### Sniff Network Both `2.4 GHz and 5 GHz`
+ Sniff Network Both `2.4 GHz and 5 GHz`
 ```
 airodump-ng --band a wlan1
 ```
-### Capture data both `2.4 GHz and 5 GHz`
+ Capture data both `2.4 GHz and 5 GHz`
 ```
 airodump-ng --band abg wlan1
 ```
-### Capture data in a file `test`
+ Capture data in a file `test`
 ```
 airodump-ng --bssid @1 --channel @2 --write test wlan1
 ```
@@ -91,15 +202,29 @@ airodump-ng --bssid @1 --channel @2 --write test wlan1
 
 @2 → Channel no. of target
 
-### Open wireshark application to read captured data, captured in `fileName.cap`, 
+ Open wireshark application to read captured data, captured in `test.cap`, 
 ```
 wireshark
 ```
----
+&nbsp;
 ## DE-Authentication Attack 
 <details>
-    <summary>why de-authentication attack ?</summary>
-it`s cool and amazing attack on your nearest routers  & devices, it uses { aireplay } package and takes MAC address of Router & Client and keep sending deauthentication packet to Router & Client as well, you can send really large no. of packets and keep client disconnect as you want.
+    <summary>What is de-authentication attack ?</summary>
+This attack allow us to disconnect any device,
+from any network, before connecting to any of these networks
+and without the need to know the password for the network.
+To do this, we're going to pretend to be the client
+that we want to disconnect, by changing our MAC address
+to the MAC address of that client, and tell the router
+that I want to disconnect from you.
+Then, we're going to pretend to be the router, again,
+by changing our MAC address to the router's MAC address
+and tell the client that you're requested
+to be disconnected, so I'm going to disconnect you.
+This will allow us to successfully disconnect,
+or de-authenticate any client from any network.
+Now, we're actually not going to do this manually,
+we're gonna use a tool called { aireplay-ng }to do that.
 </details>
 
 ```
@@ -111,7 +236,7 @@ aireplay-ng --deauth @1 -a @2 -c @3 wlan1
 
 @3 → MAC Address of the Client
 
-&nbsp;
+
 
 if it`s fails then, target router on specfic channel
 ```
@@ -121,6 +246,11 @@ airodump-ng --bssid @1 --channel @2 wlan1
 
 @2 → Channel number
 
+---
+# 2. Gaining Access
+<details>
+    <summary></summary>
 
+</details>
 
 # ===}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
