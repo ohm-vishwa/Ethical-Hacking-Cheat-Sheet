@@ -270,61 +270,59 @@ if your target does not use encryption then you just connect to it. if your targ
 &nbsp;
 
 The only problem is if your target using encryption.
-
 </details>
 
 ### WEP Cracking
+
 <details>
     <summary>Know about WEP ?</summary>
-● Wired Equivalent Privacy. _
-● Old encryption.
-● Uses an algorithm called RC4.
-● Still used in some networks. 
-● Can be cracked easily.  
+● Wired Equivalent Privacy. <br />
+● Old encryption.<br />
+● Uses an algorithm called RC4.<br />
+● Still used in some networks.<br />
+● Can be cracked easily.<br />
+<br />
+● Client encrypts data using a key.<br />
+● Encrypted packet sent in the air.<br />
+● Router decrypts packet using the key.<br />
+<br />
+● Each packet is encrypted using a unique key stream.<br />
+● Random initialization vector (IV) is used to generate the keys streams.<br />
+● The initialization vector is only 24 bits!<br />
+● IV + Key (password) = Key stream.<br />
 
-● Client encrypts data using a key.
-● Encrypted packet sent in the air.
-● Router decrypts packet using the key.
-
-● Each packet is encrypted using a unique key stream.
-● Random initialization vector (IV) is used to generate the keys streams.
-● The initialization vector is only 24 bits!
-● IV + Key (password) = Key stream.
-
-● IV is too small (only 24 bits).
-● IV is sent in plain text.
-
-Result:
-● IV’s will repeat on busy networks.
-● This makes WEP vulnerable to statistical attacks.
-● Repeated IVs can be used to determine the key stream;
-● And break the encryption
-
-Conclusion:
-To crack WEP we need to:
-1. Capture a large number of packets/IVs. → using airodump-ng
-2. Analyse the captured IVs and crack the key. → using aircrack-ng
-
-Problem:
-● If network is not busy.
-● It would take some time to capture enough IVs.
-
-Solution:
-→ Force the AP to generate new IVs.
-
-Fake Authentication
-Problem:
-● APs only communicate with connected clients.
-→ We can’t communicate with it.
-→ We can’t even start the attack.
-Solution:
-→ Associate with the AP before launching the attack.
-
-ARP Request Replay
-● Wait for an ARP packet.
-● Capture it, and replay it (retransmit it).
-● This causes the AP to produce another packet with a new IV.
-● Keep doing this till we have enough IVs to crack the key.
+● IV is too small (only 24 bits).<br />
+● IV is sent in plain text.<br />
+<br />
+Result:<br />
+● IV’s will repeat on busy networks.<br />
+● This makes WEP vulnerable to statistical attacks.<br />
+● Repeated IVs can be used to determine the key stream;<br />
+● And break the encryption<br />
+<br />
+Conclusion:<br />
+To crack WEP we need to:<br />
+1. Capture a large number of packets/IVs. → using airodump-ng<br />
+2. Analyse the captured IVs and crack the key. → using aircrack-ng<br />
+<br />
+Problem:<br />
+● If network is not busy.<br />
+● It would take some time to capture enough IVs.<br />
+Solution:<br />
+→ Force the AP to generate new IVs.<br />
+<br />
+Fake Authentication<br />
+Problem:<br />
+● APs only communicate with connected clients.<br />
+→ We can’t communicate with it.<br />
+→ We can’t even start the attack.<br />
+Solution: → Associate with the AP before launching the attack.<br />
+<br />
+ARP Request Replay<br />
+● Wait for an ARP packet.<br />
+● Capture it, and replay it (retransmit it).<br />
+● This causes the AP to produce another packet with a new IV.<br />
+● Keep doing this till we have enough IVs to crack the key.<br />
 </details>
 
 
