@@ -66,6 +66,11 @@ airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 ```
 ---
 ## Packet Sniffing
+<details>
+    <summary>What is Packet Sniffing ?</summary>
+Packet sniffing is like secretly listening to conversations on the internet to see what information is being sent between computers.
+</details>
+
 ### Sniff Network around `2.4 GHz`
 ```
 airodump-ng wlan1
@@ -94,7 +99,7 @@ wireshark
 ## DE-Authentication Attack 
 <details>
     <summary>why de-authentication attack ?</summary>
-it`s cool and amazing attack on your nearest device & router, it uses { aireplay } package and takes MAC address of Router & Client and keep sending deauthentication packet to Router & Client as well, you can send really large no. of packets and keep client disconnect as you want.
+it`s cool and amazing attack on your nearest routers  & devices, it uses { aireplay } package and takes MAC address of Router & Client and keep sending deauthentication packet to Router & Client as well, you can send really large no. of packets and keep client disconnect as you want.
 </details>
 
 ```
@@ -105,17 +110,7 @@ aireplay-ng --deauth @1 -a @2 -c @3 wlan1
 @2 → BSSID of router
 
 @3 → MAC Address of the Client
-<details>
-    <summary>know more abot it</summary>
-we're doing --deauth to tell
-aireplay-ng that I want to run a de-authentication attack,
-I'm givin' it a really large number of packets, so that it
-keeps sending the de-authentication packets
-to both the router and the client, and keep the client
-disconnected, I'm using -a to specify the MAC address of the
-target router, or the target access point, then I'm using -c
-to specify the MAC address of the client.
-</details>
+
 &nbsp;
 
 if it`s fails then, target router on specfic channel
@@ -125,7 +120,6 @@ airodump-ng --bssid @1 --channel @2 wlan1
 @1 → BSSID of target
 
 @2 → Channel number
-
 
 
 
