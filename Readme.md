@@ -27,8 +27,11 @@ sudo su
 - [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#changing-mac-address)
 - [Network Hacking](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
     * [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
+        * Packet Sniffing
+        * De-Authentication Attack
     * [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
-    * [3. Post-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#3-post-connection-attack)
+        * WEP Cracking
+    * [3. Post-Connection Attack]()
 
 
 
@@ -60,7 +63,7 @@ we want is to be able to capture all the packets
 that are within our range,
 even if they are sent to the router
 and even if they are sent to another device.
-So to do this, we need to set our network adapter to the mode
+So to do this, we need to set our network adapter to the monitor mode
 </details>
 
 ```
@@ -84,8 +87,7 @@ airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 
 ### [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
 ### [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
-### [3. Post-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#3-post-connection-attack)
-&nbsp;
+### [3. Post-Connection Attack]()
 <details>
     <summary>What is MAC Address ?</summary>
 MAC address stands for Media Access Control,
@@ -132,7 +134,7 @@ with specific MAC addresses can connect to,
 and you will also be able to hide your identity.
 </details>
 
- Changing MAC Address
+### Changing MAC Address
 1. step
 ```
 ifconfig
@@ -162,7 +164,12 @@ ifconfig wlan1 up
 ```
 ---
 # 1. Pre-Connection Attack
-## Packet Sniffing
+<details>
+    <summary>What is Pre-Connection Attack ?</summary>
+A pre-connection attack is like a sneak attack on a computer or network before any proper connection is established. It's when a hacker tries to break into a system without actually logging in or getting permission. They might do this by scanning for vulnerabilities or trying to guess passwords. It's a bit like trying to break into a house before you even knock on the door.
+</details>
+
+### Packet Sniffing
 <details>
     <summary>What is Packet Sniffing ?</summary>
 Now that we have enabled monitor mode
@@ -211,8 +218,7 @@ airodump-ng --bssid @1 --channel @2 --write test wlan1
 ```
 wireshark
 ```
-&nbsp;
-## DE-Authentication Attack 
+### DE-Authentication Attack 
 <details>
     <summary>What is de-authentication attack ?</summary>
 This attack allow us to disconnect any device,
@@ -254,6 +260,81 @@ airodump-ng --bssid @1 --channel @2 wlan1
 ---
 
 # 2. Gaining Access
+<details>
+    <summary>What is Gaining Acess ?</summary>
+Once`s we connect to the network, we can do so many cool things. we will able to gather so much more info, we will be able to intercept the connection and see every things that the people sends whether it user name, passward, url and anything.
+And we will be able to modify data. 
+&nbsp;
+
+if your target does not use encryption then you just connect to it. if your target is wired network  then just use cable and connect to it.
+&nbsp;
+
+The only problem is if your target using encryption.
+
+</details>
+
+### WEP Cracking
+<details>
+    <summary>Know about WEP ?</summary>
+● Wired Equivalent Privacy. _
+● Old encryption.
+● Uses an algorithm called RC4.
+● Still used in some networks. 
+● Can be cracked easily.  
+
+● Client encrypts data using a key.
+● Encrypted packet sent in the air.
+● Router decrypts packet using the key.
+
+● Each packet is encrypted using a unique key stream.
+● Random initialization vector (IV) is used to generate the keys streams.
+● The initialization vector is only 24 bits!
+● IV + Key (password) = Key stream.
+
+● IV is too small (only 24 bits).
+● IV is sent in plain text.
+
+Result:
+● IV’s will repeat on busy networks.
+● This makes WEP vulnerable to statistical attacks.
+● Repeated IVs can be used to determine the key stream;
+● And break the encryption
+
+Conclusion:
+To crack WEP we need to:
+1. Capture a large number of packets/IVs. → using airodump-ng
+2. Analyse the captured IVs and crack the key. → using aircrack-ng
+
+Problem:
+● If network is not busy.
+● It would take some time to capture enough IVs.
+
+Solution:
+→ Force the AP to generate new IVs.
+
+Fake Authentication
+Problem:
+● APs only communicate with connected clients.
+→ We can’t communicate with it.
+→ We can’t even start the attack.
+Solution:
+→ Associate with the AP before launching the attack.
+
+ARP Request Replay
+● Wait for an ARP packet.
+● Capture it, and replay it (retransmit it).
+● This causes the AP to produce another packet with a new IV.
+● Keep doing this till we have enough IVs to crack the key.
+</details>
+
+
+<details>
+    <summary></summary>
+    
+</details>
+
+
+
 
 
 
