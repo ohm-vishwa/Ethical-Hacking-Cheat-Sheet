@@ -4,7 +4,7 @@
     <summary> Basic Information</summary>
 These commands are works only on linux based OS system
 An external Network Adapter is required, Your Network Adapter must support
-<span style="color: orange">Monitor Mode, packet injection mode </span> Here my network interface name is <span style="color: orange">wlan1</span>, use these commands
+<font color="green">Monitor Mode, packet injection mode</font> Here my network interface name is <font color="green">wlan1</font>, use these commands
 
 ```sh
 iwconfig 
