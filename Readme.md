@@ -1,5 +1,4 @@
 # <p style="text-align:center">Ethical Hacking Cheat Sheet </p>
----
 <details>
     <summary> Basic Information</summary>
 These commands are works only on linux based OS system
@@ -94,7 +93,7 @@ wireshark
 ---
 ## DE-Authentication Attack 
 <details>
-    <summary>why de-authentication ?</summary>
+    <summary>why de-authentication attack ?</summary>
 it`s cool and amazing attack on your nearest device & router, it uses { aireplay } package and takes MAC address of Router & Client and keep sending deauthentication packet to Router & Client as well, you can send really large no. of packets and keep client disconnect as you want.
 </details>
 
@@ -119,10 +118,15 @@ to specify the MAC address of the client.
 </details>
 &nbsp;
 
-if it`s fails then, ot target specific router
+if it`s fails then, target router on specfic channel
 ```
 airodump-ng --bssid @1 --channel @2 wlan1
 ```
 @1 → BSSID of target
 
 @2 → Channel number
+
+
+
+
+# ===}> [Keep Supporting me on :yt:](https://www.youtube.com/@ohm_vishwa)
