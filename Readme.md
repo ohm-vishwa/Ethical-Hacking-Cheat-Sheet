@@ -129,4 +129,4 @@ airodump-ng --bssid @1 --channel @2 wlan1
 
 
 
-# ===}> [Keep Supporting me on :yt:](https://www.youtube.com/@ohm_vishwa)
+# ===}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
