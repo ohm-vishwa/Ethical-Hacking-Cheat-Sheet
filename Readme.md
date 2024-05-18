@@ -25,9 +25,14 @@ sudo su
 - [Network Manager Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-manager-commands)
 - [Network Adapter testing commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-adapter-testing-commands)
 - [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#changing-mac-address)
-- [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
-- 
+- [Network Hacking](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
+    * [1. Pre-Connection Attack]()
+    * [2. Ganing Access]()
+    * [3. Post-Connection Attack]()
 
+
+
+    
 ---
 ## Network Manager Commands
  Kill Network Manager
