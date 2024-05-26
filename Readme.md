@@ -104,7 +104,7 @@ airbase-ng -a 00:01:02:03:04:05 --essid "{AP_name}" -c {channel_no.} wlan1
 # Network Hacking
 ### Changing MAC Address
 <details>
-    <summary>About MAC Address ?</summary>
+    <summary>About MAC Address</summary>
 MAC address stands for Media Access Control,
 it's a permanent, physical, and unique address
 assigned to network interfaces
@@ -467,7 +467,7 @@ crunch 6 8 {key length} abc12 {char used} -o test.txt
 crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@b}
 ```
 ---
-# WPA-key Cracking using `ordlist`
+# WPA-key Cracking using `wordlist`
 ```
 aircrack-ng {.cap} -w {Wordlist.txt}
 ```
