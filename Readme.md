@@ -66,7 +66,7 @@ systemctl status NetworkManager
 # Network Adapter Testing Commands
 
 <details>
-    <summary>Why we need to enable monitor mode ?</summary>
+    <summary>Why we need to enable monitor mode</summary>
 we want is to be able to capture all the packets
 that are within our range,
 even if they are sent to the router
@@ -184,14 +184,14 @@ we're not really changing the physical MAC address.
 # 1. Pre-Connection Attack
 
 <details>
-    <summary>About Pre-Connection Attack ?</summary>
+    <summary>About Pre-Connection Attack</summary>
 A pre-connection attack is like a sneak attack on a computer or network before any proper connection is established. It's when a hacker tries to break into a system without actually logging in or getting permission. They might do this by scanning for vulnerabilities or trying to guess passwords. It's a bit like trying to break into a house before you even knock on the door.
 </details>
 
 ### Packet Sniffing
 
 <details>
-    <summary>About Packet Sniffing ?</summary>
+    <summary>About Packet Sniffing</summary>
 Now that we have enabled monitor mode
 on our wireless interface,
 we are able to capture all the wifi packets
@@ -276,7 +276,7 @@ airodump-ng --bssid {router_MAC_add} --channel {channel_no.} wlan1
 # 2. Gaining Access
 
 <details>
-    <summary>About Gaining Acess ?</summary>
+    <summary>About Gaining Acess</summary>
 Once`s we connect to the network, we can do so many cool things. we will able to gather so much more info, we will be able to intercept the connection and see every things that the people sends whether it user name, passward, url and anything.
 And we will be able to modify data.
 &nbsp;
@@ -290,7 +290,7 @@ The only problem is if your target using encryption.
 # WEP Cracking
 
 <details>
-    <summary>About WEP Encryption?</summary>
+    <summary>About WEP Encryption</summary>
 <br/>
 ● Wired Equivalent Privacy. <br />
 ● Old encryption.<br />
