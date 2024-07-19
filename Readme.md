@@ -1,13 +1,21 @@
 # Ethical Hacking Cheat Sheet
 
-|Basic Commands|Advance Commands|
-|--------------|----------------|
-|[]()|[]()|
-|[]()|[]()|
-|[]()|[]()|
-|[]()|[]()|
-|[]()|[]()|
-|[]()|[]()|
+|Commands|
+|--------------|
+|[Network Manager Commands](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#network-manager-commands)|
+|[Network Adapter Testing Commands](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#network-adapter-testing-commands)|
+|[Changing MAC Address](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#changing-mac-address)|
+|[Sniff Network](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#sniff-network)|
+|[Capture Data](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#capture-data)|
+|[Analyse Data](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#analyse-data)|
+|[Associate with Router](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#associate-with-router)|
+|[DE-Authentication Attack](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#de-authentication-attack)|
+|[Fake-Authentication Attack](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#fake-authentication-attack)|
+|[WPA Handshake Capture](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#wpa-handshake-capture)|
+|[Password Cracking Using `John`](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#password-cracking-using-john)|
+|[Password Cracking using wordlist](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#password-cracking-using-wordlist)|
+|[Create word list](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#create-word-list)|
+|[Password Cracking Without Word list](https://github.com/ohm-vishwa/Ethical-Hacking-Cheat-Sheet?tab=readme-ov-file#password-cracking-without-word-list)|
 ---
 
 # Network Manager commands
