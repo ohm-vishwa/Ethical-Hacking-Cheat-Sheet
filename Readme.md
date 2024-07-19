@@ -10,7 +10,7 @@
 |[]()|[]()|
 ---
 
-# Check your Network Adapter
+# Network Manager commands
 
 > ### Kill Network Manager
 ```bash
@@ -32,9 +32,6 @@ systemctl restart NetworkManager
 ```bash
 systemctl status NetworkManager
 ```
-
----
----
 ---
 
 # Network Adapter Testing Commands
@@ -60,8 +57,7 @@ you can put any fake MAC Address like this `00:01:02:03:04:05`
 ```bash
 airbase-ng -a 00:01:02:03:04:05 --essid "<AP_name>" -c {channel_no.} wlan0
 ```
----
----
+
 ---
 
 # Changing MAC Address
@@ -138,8 +134,6 @@ john {.txt}
 ```
 
 ---
----
----
 
 # WPA-key Cracking using `wordlist`
 ```bash
@@ -154,8 +148,7 @@ crunch 6 8 {key length} abc12 {char used} -o test.txt
 ```sh
 crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@b}
 ```
----
----
+
 ---
 # WPA / WPA2 Cracking `Without Word list`
 
