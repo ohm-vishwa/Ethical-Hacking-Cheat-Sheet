@@ -83,11 +83,11 @@ airodump-ng --band a wlan0
 airodump-ng --band abg wlan0
 ```
 ---
-> ### Capture Data using `airodump-ng`
+# Capture Data
 ```bash
 airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write (file_name_without_extension) wlan0
 ```
-to analyze data
+# Analyse Data
 ```bash
 wireshark
 ```
@@ -135,16 +135,17 @@ john {.txt}
 
 ---
 
-# WPA-key Cracking using `wordlist`
+# Password Cracking using `wordlist`
 ```bash
 aircrack-ng {.cap} -w {Wordlist.txt}
 ```
-## create word list
+---
+# create word list
 ```sh
 man crunch
 crunch 6 8 {key length} abc12 {char used} -o test.txt
 ```
-## Create word list using pattern
+> ## Create word list using pattern
 ```sh
 crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@b}
 ```
