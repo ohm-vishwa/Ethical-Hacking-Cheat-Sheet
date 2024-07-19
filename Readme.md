@@ -1,4 +1,4 @@
-# Ethical Hacking Cheat Sheet
+# Wifi Hacking
 
 |Commands|
 |--------------|
