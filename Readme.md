@@ -118,7 +118,7 @@ aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan0
 airodump-ng --bssid {router_MAc_add} --channel {channel_no.} --write {file_name_without_extn} wlan0
 ```
 
-# Crack Password Using `Handshake file`
+# Password Cracking Using `John`
 
 > ### `.cap` to `.hccap`
 ```bash
@@ -151,7 +151,7 @@ crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@
 ```
 
 ---
-# WPA / WPA2 Cracking `Without Word list`
+# Password Cracking `Without Word list`
 
 > ## Scan WPS Enable Network Around us
 
